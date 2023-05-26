@@ -17,7 +17,7 @@
       tailwind.config = {
         theme: {
           fontFamily: {
-            sans: ["Lora"],
+            serif: ["Lora"],
           },
         },
       };
@@ -25,11 +25,12 @@
   </head>
 
   <body class="h-full flex flex-col">
+    <div id="news" class="hidden bg-green-400 px-4 py-2 w-full text-lg"></div>
     <header class="py-10">
       <div
         class="flex justify-between items-center px-4 lg:px-8 mx-auto max-w-7xl"
       >
-        <h1 class="text-2xl font-bold">PicBrew</h1>
+        <h1 class="font-serif text-2xl font-bold">PicBrew</h1>
 
         <nav>Links TBD</nav>
       </div>
@@ -38,20 +39,157 @@
     <main class="font-medium tracking-tight text-slate-900">
       <div class="mt-20 lg:mt-32 mx-auto max-w-7xl text-center">
         <h2
-          class="text-5xl bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500 font-semibold drop-shadow-sm tracking-tight"
+          class="font-serif mx-auto max-w-2xl text-5xl bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500 font-semibold drop-shadow-sm tracking-tight"
         >
-          The image platform that engages users.
-        </h2>
-        <p class="tracking-tight text-xl mt-2">
           Know which images capture your users. Iterate on the fly.
-        </p>
+        </h2>
+
+        <div
+          id="register-modal"
+          class="hidden absolute left-0 right-0 top-0 bottom-0 z-50"
+        >
+          <div
+            class="bg-slate-600 opacity-25 fixed left-0 right-0 top-0 bottom-0"
+          ></div>
+          <div
+            class="max-w-lg w-full shadow text-left mx-auto mt-4 md:mt-24 relative z-50 p-8 rounded bg-white"
+          >
+            <div class="flex justify-between items-center mb-4">
+              <h3 class="tracking-tight font-serif font-semibold text-2xl">
+                Join the PicBrew beta
+              </h3>
+              <button onClick="closeModal()" class="text-2xl mb-2">
+                &#x2715;
+              </button>
+            </div>
+            <p>
+              We hate spam. You'll only receive an email once a spot opens in
+              the beta!
+            </p>
+            <form
+              onsubmit="return subscribe(event)"
+              class="flex justify-between flex-col mt-8"
+            >
+              <div
+                id="register-error"
+                class="hidden bg-red-500 mb-6 text-white rounded px-4 py-2"
+              ></div>
+              <input
+                type="text"
+                name="name"
+                class="px-4 py-2 rounded border border-slate-300"
+                placeholder="Your name"
+              />
+              <input
+                type="email"
+                name="emailAddress"
+                class="mt-2 px-4 py-2 rounded border border-slate-300"
+                placeholder="Your email address"
+              />
+
+              <button
+                type="submit"
+                id="register-submit"
+                class="mt-6 text-white font-bold rounded bg-violet-500 hover:bg-violet-600 px-4 py-2"
+              >
+                Join
+              </button>
+            </form>
+          </div>
+        </div>
 
         <button
-          class="mt-12 text-white font-bold drop-shadow rounded transition-color hover:bg-violet-600 bg-violet-500 px-8 py-4"
+          onclick="document.querySelector('#register-modal').classList.toggle('hidden'); document.querySelectorAll('#register-modal input')[0].focus()"
+          class="mt-20 text-white font-bold drop-shadow rounded transition-color hover:bg-violet-600 bg-violet-500 px-8 py-4"
         >
-          Subscribe
+          Join the beta
         </button>
       </div>
     </main>
+
+    <script>
+      function closeModal() {
+        resetRegister(true);
+        document.querySelector("#register-modal").classList.add("hidden");
+      }
+
+      function resetRegister(resetInputs = false) {
+        const errorDOM = document.querySelector("#register-error");
+        errorDOM.innerHTML = "";
+
+        if (!errorDOM.classList.contains("hidden")) {
+          errorDOM.classList.add("hidden");
+        }
+
+        if (resetInputs) {
+          document
+            .querySelectorAll("#register-modal input")
+            .forEach((elem) => (elem.value = ""));
+        }
+      }
+
+      function subscribe(e) {
+        const email = e.target.emailAddress.value;
+        const name = e.target.name.value;
+
+        const errorDOM = document.querySelector("#register-error");
+        resetRegister();
+
+        if (!name || name.length <= 2) {
+          errorDOM.innerHTML = "Your name is missing.";
+          errorDOM.classList.remove("hidden");
+          return false;
+        }
+
+        if (!email || email.length < 5) {
+          errorDOM.innerHTML = "Your email is missing or not valid.";
+          errorDOM.classList.remove("hidden");
+          return false;
+        }
+
+        const registerButtonDOM = document.querySelector("#register-submit");
+        registerButtonDOM.disabled = true;
+
+        const response = fetch(
+          `https://api.convertkit.com/v3/forms/4969483/subscribe`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json; charset=utf-8",
+            },
+            body: JSON.stringify({
+              email,
+              first_name: name,
+              tags: ["3875032"],
+              api_key: "hJ1mszvajxKczmRZaPf7Bg",
+            }),
+          }
+        )
+          .then((response) => {
+            if (response.status < 300) {
+              const newsDOM = document.querySelector("#news");
+              newsDOM.innerHTML =
+                "Signed up! We'll send you an email once you are added to the beta.";
+              newsDOM.classList.remove("hidden");
+
+              closeModal();
+            } else {
+              response.json().then(console.log);
+              errorDOM.innerHTML =
+                "There was an error processing your request.";
+              errorDOM.classList.remove("hidden");
+            }
+
+            registerButtonDOM.disabled = false;
+          })
+          .catch((response) => {
+            errorDOM.innerHTML = "There was an error processing your request.";
+            errorDOM.classList.remove("hidden");
+            registerButtonDOM.disabled = false;
+          });
+
+        return false;
+      }
+    </script>
   </body>
 </html>
