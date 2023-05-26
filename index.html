@@ -3,24 +3,55 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    
     <script src="https://cdn.tailwindcss.com"></script>
+
     <title>PicBrew</title>
-  </head> 
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind.config = {
+        theme: {
+          fontFamily: {
+            sans: ["Lora"],
+          },
+        },
+      };
+    </script>
+  </head>
 
   <body class="h-full flex flex-col">
     <header class="py-10">
-      <div class="flex justify-between items-center px-4 lg:px-8 mx-auto max-w-7xl">
+      <div
+        class="flex justify-between items-center px-4 lg:px-8 mx-auto max-w-7xl"
+      >
         <h1 class="text-2xl font-bold">PicBrew</h1>
-      
+
         <nav>Links TBD</nav>
       </div>
     </header>
 
     <main class="font-medium tracking-tight text-slate-900">
-      <div class="mt-20 mb-16 lg:mt-32 mx-auto max-w-7xl">
-        <p class="text-center text-4xl text-slate-900 tracking-tight">Engage your users.</p>
-    </div>
+      <div class="mt-20 lg:mt-32 mx-auto max-w-7xl text-center">
+        <h2
+          class="text-5xl bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500 font-semibold drop-shadow-sm tracking-tight"
+        >
+          The image platform that engages users.
+        </h2>
+        <p class="tracking-tight text-xl mt-2">
+          Know which images capture your users. Iterate on the fly.
+        </p>
+
+        <button
+          class="mt-12 text-white font-bold drop-shadow rounded transition-color hover:bg-violet-600 bg-violet-500 px-8 py-4"
+        >
+          Subscribe
+        </button>
+      </div>
     </main>
   </body>
 </html>
