@@ -133,7 +133,7 @@
                   >
                     Dynamic Images
                   </h3>
-                  Add content to images whenever to create engaging images.
+                  Add content to images at any time to create engaging images.
                 </button>
               </li>
               <li class="mt-2">
@@ -165,18 +165,56 @@
             </ul>
           </div>
 
-          <div class="absolute right-0 left-[50%] bottom-0 top-[-35%]">
-            <div
-              class="bg-white h-full drop-shadow-2xl border rounded px-4 py-8"
+          <div class="absolute right-0 left-[50%] top-[-35%] max-w-xl examples">
+            <section
+              id="dynamic-images"
+              class="bg-white h-full h-full drop-shadow-2xl border rounded p-4 active"
             >
-              Photo here
-            </div>
+              <div
+                class="border px-4 py-2 border rounded text-lg text-slate-700 mb-2"
+              >
+                https://picbrew.io/api/v1/images/1?name=<span
+                  class="placeholder"
+                  >Dylan</span
+                >
+              </div>
+
+              <div class="relative">
+                <h3
+                  class="absolute left-6 top-6 text-5xl font-bold text-white drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.4)]"
+                >
+                  Top 10 Travel Destinations in 2023
+                </h3>
+                <p
+                  class="absolute right-6 bottom-6 text-xl text-white drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.4)]"
+                >
+                  Find your perfect getaway,
+                  <span class="placeholder">Dylan</span>.
+                </p>
+                <img
+                  src="public/example-1.jpg"
+                  alt="Photo of a mountain top village."
+                  class="rounded border-2 border-slate-400 h-full w-auto block"
+                />
+              </div>
+            </section>
+
+            <section
+              id="experiment"
+              class="bg-white h-full h-full drop-shadow-2xl border rounded p-4 hidden"
+            >
+              <img
+                src="public/example-2.jpg"
+                alt="Photo of a mountain top village."
+                class="rounded border-2 border-slate-400 h-full w-auto block"
+              />
+            </section>
           </div>
         </div>
       </div>
     </main>
 
-    <footer class="w-full bg-white px-4 py-8 mt-20">
+    <footer class="w-full bg-white px-4 py-8">
       <div
         class="flex justify-between items-center border-t pt-8 px-4 md:px-0 mx-auto max-w-7xl"
       >
@@ -243,16 +281,80 @@
     </dialog>
 
     <script>
+      let examplesInterval = null;
+
+      window.onload = function () {
+        animateTyping();
+      };
+
+      function animateTyping() {
+        // This is super ugly, but works for now.
+        const placeholders = document.querySelectorAll(".placeholder");
+        const firstName = "Dylan";
+        const secondName = "Karisa";
+        let name = firstName;
+        let isDeleting = true;
+        let i = firstName.length;
+
+        examplesInterval = setInterval(() => {
+          if (i >= name.length || i < 0) {
+            isDeleting = name.length <= i;
+
+            if (i <= 0) {
+              if (isDeleting) {
+                i--;
+              }
+
+              if (name === firstName) {
+                name = secondName;
+              } else {
+                name = firstName;
+              }
+            }
+          }
+          if (isDeleting) {
+            i--;
+          } else {
+            i++;
+          }
+          placeholders.forEach((item) => {
+            if (!isDeleting) {
+              if (!name[i]) {
+                return;
+              }
+              item.innerHTML += name[i];
+            } else {
+              item.innerHTML = name.substring(0, i);
+            }
+          });
+        }, 400);
+      }
+
       function setExampleActive(event, type) {
         document
           .querySelector(".list-button.active")
           .classList.remove("active");
         event.currentTarget.classList.add("active");
 
+        if (examplesInterval) {
+          clearInterval(examplesInterval);
+        }
+
+        const elem = document.querySelector(".examples .active");
+        elem.classList.add("hidden");
+        elem.classList.remove("active");
+
         switch (type) {
           case "dynamic-images":
+            const dynamic = document.querySelector("#dynamic-images");
+            dynamic.classList.remove("hidden");
+            dynamic.classList.add("active");
+            animateTyping();
             break;
           case "experiment":
+            const experiment = document.querySelector("#experiment");
+            experiment.classList.remove("hidden");
+            experiment.classList.add("active");
             break;
           case "optimization":
             break;
