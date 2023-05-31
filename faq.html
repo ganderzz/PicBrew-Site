@@ -95,375 +95,86 @@
       </div>
     </header>
 
-    <main class="font-medium tracking-tight text-slate-900">
-      <div class="mt-20 lg:mt-32 px-4 md:px-0 mx-auto max-w-7xl text-center">
+    <main class="font-medium tracking-tight text-slate-900 mt-12">
+      <div class="flex flex-col justify-between px-4 lg:px-8 mx-auto max-w-4xl">
         <h2
-          class="font-serif mx-auto max-w-2xl text-3xl md:text-5xl bg-clip-text text-transparent bg-gradient-to-r from-primary-400 to-primary-600 font-semibold drop-shadow-sm tracking-tight"
+          class="font-serif text-3xl md:text-5xl font-bold tracking-tight mb-12"
         >
-          Know what images capture your users. Iterate on the fly.
+          FAQ
         </h2>
 
-        <button
-          onclick="document.querySelector('#register-modal').showModal();"
-          class="mt-20 btn-primary"
-        >
-          Join the beta
-        </button>
-      </div>
+        <div class="rounded bg-white p-4 shadow">
+          <h3 class="font-semibold text-xl">What is PicBrew?</h3>
+          <p class="mt-4">
+            PicBrew is the simpliest way to upload, manage, and serve images to
+            your users. You have the option to upload images directly to
+            PicBrew, or create templates that can be used to create dynamic
+            images. Once uploaded, you can use PicBrew's CDN to serve your
+            images or use PicBrew's branching feature. Branching allows you to
+            A/B test images and measure engagement.
+          </p>
+        </div>
 
-      <div class="w-full mt-52 bg-primary-800 px-4 py-20 relative">
-        <div
-          class="flex justify-between items-center relative mx-auto max-w-sm md:max-w-md lg:max-w-7xl"
-        >
-          <div>
-            <h2
-              class="font-serif text-3xl text-white font-semibold tracking-tight mb-6"
-            >
-              Craft the perfect picture.
-            </h2>
+        <div class="rounded bg-white p-4 shadow mt-6">
+          <h3 class="font-semibold text-xl">Why use PicBrew?</h3>
+          <ul class="list-decimal mt-4 px-4">
+            <li>
+              <strong>Simplified Image Upload and Management:</strong> PicBrew
+              offers a seamless and user-friendly interface for uploading and
+              managing your images. Whether you want to directly upload images
+              to our platform or create dynamic images using customizable
+              templates, PicBrew has got you covered.
+            </li>
 
-            <ul class="text-white break-words leading-8">
-              <li>
-                <button
-                  class="list-button active"
-                  onclick="setExampleActive(event, 'dynamic-images')"
-                >
-                  <h3
-                    class="font-serif text-xl text-white font-semibold tracking-tight"
-                  >
-                    Dynamic Images
-                  </h3>
-                  Add content to your images at any time.
-                </button>
-              </li>
-              <li class="mt-2">
-                <button
-                  class="list-button"
-                  onclick="setExampleActive(event, 'experiment')"
-                >
-                  <h3
-                    class="font-serif text-xl text-white font-semibold tracking-tight"
-                  >
-                    Experiment
-                  </h3>
-                  A/B test your images and track what works.
-                </button>
-              </li>
-              <li class="mt-2">
-                <button
-                  class="list-button"
-                  onclick="setExampleActive(event, 'optimization')"
-                >
-                  <h3
-                    class="font-serif text-xl text-white font-semibold tracking-tight"
-                  >
-                    Image optimization
-                  </h3>
-                  Resize and crop images on the fly.
-                </button>
-              </li>
-            </ul>
-          </div>
+            <li>
+              <strong>Supercharge Engagement with A/B Testing:</strong> Ever
+              wondered which images resonate best with your audience? With
+              PicBrew's A/B testing feature, you can gain valuable insights into
+              user preferences. By providing a single URL that displays
+              different images to each user, PicBrew empowers you to compare and
+              measure engagement for effective image optimization.
+            </li>
 
-          <div class="absolute right-0 left-[50%] top-[-35%] max-w-xl examples">
-            <section
-              id="dynamic-images"
-              class="bg-white h-full h-full drop-shadow-2xl border rounded p-4 active"
-            >
-              <div
-                class="border px-4 py-2 border rounded text-lg text-slate-700 mb-2"
-              >
-                https://picbrew.io/api/v1/images/1?name=<span
-                  class="placeholder"
-                  >Dylan</span
-                >
-              </div>
+            <li>
+              <strong>Harness the Power of PicBrew's CDN and Branching:</strong>
+              Delivering images swiftly and reliably is crucial for an
+              exceptional user experience. PicBrew offers a powerful Content
+              Delivery Network (CDN) that ensures your images load quickly,
+              resulting in happier users. Additionally, our branching feature
+              allows you to conduct A/B tests effortlessly and measure user
+              engagement with different image variations.
+            </li>
 
-              <div class="relative">
-                <h3
-                  class="absolute left-6 top-6 text-5xl font-bold text-white drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.4)]"
-                >
-                  Top 10 Travel Destinations in 2023
-                </h3>
-                <p
-                  class="absolute right-6 bottom-6 text-xl text-white drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.4)]"
-                >
-                  Find your perfect getaway,
-                  <span class="placeholder">Dylan</span>.
-                </p>
-                <img
-                  src="public/example-1.jpg"
-                  alt="Photo of a mountain top village."
-                  class="rounded border-2 border-slate-400 h-full w-auto block"
-                />
-              </div>
-            </section>
+            <li>
+              <strong>Versatility for Various Applications:</strong> PicBrew is
+              not limited to your website alone. Maximize the potential of
+              PicBrew by utilizing it for thumbnail management, Open Graph
+              images, and even your marketing materials. Gain comprehensive
+              insights into user interactions across different touchpoints to
+              drive better marketing outcomes.
+            </li>
+          </ul>
+        </div>
 
-            <section
-              id="experiment"
-              class="bg-white h-full h-full drop-shadow-2xl border rounded p-4 hidden"
-            >
-              <img
-                src="public/example-2.jpg"
-                alt="Photo of a mountain top village."
-                class="rounded border-2 border-slate-400 w-1/2 block"
-              />
+        <div class="rounded bg-white p-4 shadow mt-6">
+          <h3 class="font-semibold text-xl">How does A/B testing work?</h3>
+          <p class="mt-4">
+            It's important to know what images your users respond to. PicBrew
+            provides a single URL to an image that will display a different
+            image per user. We provide a simple interface which reports what
+            image gains more clicks.
+          </p>
+        </div>
 
-              <img
-                src="public/example-2.jpg"
-                alt="Photo of a mountain top village."
-                class="rounded border-2 border-slate-400 w-1/2 block"
-              />
-            </section>
-
-            <section
-              id="optimization"
-              class="bg-white h-full h-full drop-shadow-2xl border rounded p-4 hidden"
-            >
-              <img
-                src="public/example-3.jpg"
-                alt="Photo of a mountain top village."
-                class="rounded border-2 border-slate-400 h-full w-auto block"
-              />
-            </section>
-          </div>
+        <div class="rounded bg-white p-4 shadow my-6">
+          <h3 class="font-semibold text-xl">Where should I use PicBrew?</h3>
+          <p class="mt-4">
+            Anywhere! PicBrew is a great way to manage images for your website,
+            but for extra power you can use PicBrew to gain insights on
+            thumbnails, Open Graph images, and marketing material.
+          </p>
         </div>
       </div>
     </main>
-
-    <footer class="w-full bg-white px-4 py-8">
-      <div
-        class="flex justify-between items-center border-t pt-8 px-4 md:px-0 mx-auto max-w-7xl"
-      >
-        <div>
-          <h3 class="font-serif text-2xl font-bold">PicBrew</h3>
-          Copyright © 2023
-        </div>
-
-        <div>
-          <button
-            onclick="document.querySelector('#register-modal').showModal();"
-            class="btn-primary"
-          >
-            Join the beta
-          </button>
-        </div>
-      </div>
-    </footer>
-
-    <dialog
-      id="register-modal"
-      class="max-w-lg w-full shadow-xl text-left p-8 rounded bg-white"
-      modal-mode="mega"
-    >
-      <header class="flex justify-between items-center">
-        <h3 class="tracking-tight font-serif font-semibold text-2xl">
-          Join the PicBrew beta
-        </h3>
-        <button onClick="closeModal()" class="text-2xl mb-2">&#x2715;</button>
-      </header>
-      <article class="mt-6">
-        <form
-          onsubmit="return subscribe(event)"
-          class="flex justify-between flex-col"
-        >
-          <p class="mb-4">
-            We hate spam. You'll only receive an email once a spot opens in the
-            beta!
-          </p>
-
-          <div
-            id="register-error"
-            class="hidden bg-red-500 mb-6 text-white rounded px-4 py-2"
-          ></div>
-          <input
-            type="text"
-            name="name"
-            class="input-primary"
-            placeholder="Your name"
-            autofocus
-          />
-          <input
-            type="email"
-            name="emailAddress"
-            class="mt-2 input-primary"
-            placeholder="Your email address"
-          />
-
-          <button type="submit" id="register-submit" class="mt-6 btn-primary">
-            Join
-          </button>
-        </form>
-      </article>
-    </dialog>
-
-    <script>
-      let examplesInterval = null;
-
-      window.onload = function () {
-        animateTyping();
-      };
-
-      function animateTyping() {
-        // This is super ugly, but works for now.
-        const placeholders = document.querySelectorAll(".placeholder");
-        const firstName = "Dylan";
-        const secondName = "Karisa";
-        let name = firstName;
-        let isDeleting = true;
-        let i = firstName.length;
-
-        examplesInterval = setInterval(() => {
-          if (i >= name.length || i < 0) {
-            isDeleting = name.length <= i;
-
-            if (i <= 0) {
-              if (isDeleting) {
-                i--;
-              }
-
-              if (name === firstName) {
-                name = secondName;
-              } else {
-                name = firstName;
-              }
-            }
-          }
-          if (isDeleting) {
-            i--;
-          } else {
-            i++;
-          }
-          placeholders.forEach((item) => {
-            if (!isDeleting) {
-              if (!name[i]) {
-                return;
-              }
-              item.innerHTML += name[i];
-            } else {
-              item.innerHTML = name.substring(0, i);
-            }
-          });
-        }, 400);
-      }
-
-      function setExampleActive(event, type) {
-        document
-          .querySelector(".list-button.active")
-          .classList.remove("active");
-        event.currentTarget.classList.add("active");
-
-        if (examplesInterval) {
-          clearInterval(examplesInterval);
-        }
-
-        const elem = document.querySelector(".examples .active");
-        elem.classList.add("hidden");
-        elem.classList.remove("active");
-
-        switch (type) {
-          case "dynamic-images":
-            const dynamic = document.querySelector("#dynamic-images");
-            dynamic.classList.remove("hidden");
-            dynamic.classList.add("active");
-            animateTyping();
-            break;
-          case "experiment":
-            const experiment = document.querySelector("#experiment");
-            experiment.classList.remove("hidden");
-            experiment.classList.add("active");
-            break;
-          case "optimization":
-            const optimization = document.querySelector("#optimization");
-            optimization.classList.remove("hidden");
-            optimization.classList.add("active");
-            break;
-        }
-      }
-
-      function closeModal() {
-        resetRegister(true);
-        document.querySelector("#register-modal").close();
-      }
-
-      function resetRegister(resetInputs = false) {
-        const errorDOM = document.querySelector("#register-error");
-        errorDOM.innerHTML = "";
-
-        if (!errorDOM.classList.contains("hidden")) {
-          errorDOM.classList.add("hidden");
-        }
-
-        if (resetInputs) {
-          document
-            .querySelectorAll("#register-modal input")
-            .forEach((elem) => (elem.value = ""));
-        }
-      }
-
-      function showRegisterError(message) {
-        const errorDOM = document.querySelector("#register-error");
-
-        errorDOM.innerHTML = message;
-        errorDOM.classList.remove("hidden");
-      }
-
-      function subscribe(e) {
-        const email = e.target.emailAddress.value;
-        const name = e.target.name.value;
-
-        resetRegister();
-
-        if (!name || name.length <= 2) {
-          showRegisterError("Your name is missing.");
-          return false;
-        }
-
-        if (!email || email.length < 5) {
-          showRegisterError("Your email is missing or not valid.");
-          return false;
-        }
-
-        const registerButtonDOM = document.querySelector("#register-submit");
-        registerButtonDOM.disabled = true;
-
-        const response = fetch(
-          `https://api.convertkit.com/v3/forms/4969483/subscribe`,
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json; charset=utf-8",
-            },
-            body: JSON.stringify({
-              email,
-              first_name: name,
-              tags: ["3875032"],
-              api_key: "hJ1mszvajxKczmRZaPf7Bg",
-            }),
-          }
-        )
-          .then((response) => {
-            if (response.status < 300) {
-              const newsDOM = document.querySelector("#news");
-              newsDOM.innerHTML =
-                "Signed up! We'll send you an email once you are added to the beta.";
-              newsDOM.classList.remove("hidden");
-
-              closeModal();
-            } else {
-              response.json().then(console.log);
-              showRegisterError("There was an error processing your request.");
-            }
-
-            registerButtonDOM.disabled = false;
-          })
-          .catch((response) => {
-            showRegisterError("There was an error processing your request.");
-            registerButtonDOM.disabled = false;
-          });
-
-        return false;
-      }
-    </script>
   </body>
 </html>
